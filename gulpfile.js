@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var webserver = require('gulp-webserver');
-var watch = require('gulp-watch');
-var gulpCopy = require('gulp-copy');
-var del = require('del');
-var runSequence = require('run-sequence');
-var sass = require("gulp-sass");
-
+var gulp = require('gulp'),
+    webserver = require('gulp-webserver'),
+    watch = require('gulp-watch'),
+    gulpCopy = require('gulp-copy'),
+    del = require('del'),
+    runSequence = require('run-sequence'),
+    sass = require("gulp-sass"),
+    fileinclude = require('gulp-file-include');
 
 var config = {
     scssPath: './app/scss',
@@ -20,7 +20,7 @@ gulp.task('webserver', function() {
     return gulp.src('./dist')
         .pipe(webserver({
             port: '9999',
-            host: '0.0.0.0', // Allow access for internal use
+            host: '127.0.0.1', // use 0.0.0.0 IP to allow access for internal use (LAN)
             livereload: true,
             open: true // open default browser
         }));
@@ -50,20 +50,26 @@ gulp.task("scss", ['icons'], function() {
 });
 
 
-gulp.task('icons', function() { 
-    return gulp.src(config.nodeDir + '/font-awesome/fonts/**.*') 
-        .pipe(gulp.dest(config.dist + '/css/fonts')); 
+gulp.task('icons', function() {
+    return gulp.src(config.nodeDir + '/font-awesome/fonts/**.*')
+        .pipe(gulp.dest(config.dist + '/fonts'));
+});
+
+gulp.task('fileinclude', function() {
+    gulp.src(['index.html'])
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest(config.dist));
 });
 
 /*Copy files in dist folder*/
-gulp.task('copy', ['clean', 'scss'], function() {
+gulp.task('copy', ['clean', 'scss', 'fileinclude'], function() {
     console.log('copying....');
     return gulp.src([
-            './index.html',
-            './app/**',
-            '!./app/scss',
-            '!./app/scss/**'
-        ], { base: './' })
+            './app/img/**'
+        ], { base: './app' })
         .pipe(gulp.dest('./dist'));
 });
 
