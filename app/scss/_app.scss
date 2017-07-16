@@ -4,7 +4,7 @@ header {
     text-align: center;
     position: relative;
     color: #fff;
-    background: url(../img/banner/banner-desktop.jpg) center top no-repeat;
+    background: url(img/banner/banner-desktop.jpg) center top no-repeat;
     background-size: cover;
     overflow: hidden;
     @include transition(all .75s);
@@ -12,22 +12,22 @@ header {
     left: 0;
     top: 0;
     @include mq(mobile, mideMobile) {
-        background: url(../img/banner/banner-mobile.jpg) center top no-repeat;
+        background: url(img/banner/banner-mobile.jpg) center top no-repeat;
         background-size: cover;
         height: 221vw;
     }
     @include mq(mideMobile, tablet) {
-        background: url(../img/banner/banner-mobile.jpg) center top no-repeat;
+        background: url(img/banner/banner-mobile.jpg) center top no-repeat;
         background-size: cover;
         height: 205vw;
     }
     @include mq(tablet, desktop) {
-        background: url(../img/banner/banner-tablet.jpg) center top no-repeat;
+        background: url(img/banner/banner-tablet.jpg) center top no-repeat;
         background-size: cover;
         height: 80.10vw;
     }
     @include mq($from:desktop) {
-        background: url(../img/banner/banner-desktop.jpg) center top no-repeat;
+        background: url(img/banner/banner-desktop.jpg) center top no-repeat;
         background-size: cover;
         height: 50vw;
     }
@@ -286,4 +286,11 @@ footer {
         margin-left: 0;
         margin-top: 3.5vw;
     }
+}
+
+section {
+    @include transition(all .75s);
+    @include transition-timing-function(ease-in-out);
+    padding: 60px 0px;
+    text-align: center;
 }

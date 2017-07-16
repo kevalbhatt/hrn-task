@@ -59,4 +59,6 @@ typings/
 
 #build folder
 dist
+public
+bundle.result.json
 
