@@ -1,75 +1,193 @@
+@include mq-add-breakpoint(mideMobile, 428px);
+
 header {
-    height: 50vw;
     text-align: center;
     position: relative;
     color: #fff;
-    background: url(../img/header-bg-desktop.jpg) center top no-repeat;
+    background: url(../img/banner/banner-desktop.jpg) center top no-repeat;
     background-size: cover;
     overflow: hidden;
     @include transition(all .75s);
     @include transition-timing-function(ease-in-out);
     left: 0;
     top: 0;
+    @include mq(mobile, mideMobile) {
+        background: url(../img/banner/banner-mobile.jpg) center top no-repeat;
+        background-size: cover;
+        height: 221vw;
+    }
+    @include mq(mideMobile, tablet) {
+        background: url(../img/banner/banner-mobile.jpg) center top no-repeat;
+        background-size: cover;
+        height: 205vw;
+    }
+    @include mq(tablet, desktop) {
+        background: url(../img/banner/banner-tablet.jpg) center top no-repeat;
+        background-size: cover;
+        height: 80.10vw;
+    }
+    @include mq($from:desktop) {
+        background: url(../img/banner/banner-desktop.jpg) center top no-repeat;
+        background-size: cover;
+        height: 50vw;
+    }
     .first-heading {
-        position: absolute;
         width: 100%;
-        bottom: 36vw;
+        margin-top: 20vh;
         font-family: "Playfair Display", serif;
+        @include mq(mobile, tablet) {
+            margin-top: 30vw;
+        }
         .small {
             color: #fff;
-            font-size: 2vw;
-            left: calc(54vw - 140px);
-            position: absolute;
+            display: block;
+            @include mq(mobile, mideMobile) {
+                font-size: 3.5vw;
+                line-height: 2vw;
+            }
+            @include mq(mideMobile, tablet) {
+                font-size: 3.5vw;
+                line-height: 6vw;
+            }
+            @include mq(tablet, desktop) {
+                font-size: 2.5vw;
+                line-height: 4vw;
+            }
+            @include mq($from:desktop) {
+                font-size: 2vw;
+                line-height: 4.5vw;
+            }
             &.first {
-                top: 0vw;
+                @include mq(mobile, tablet) {
+                    margin-left: -17vw;
+                }
+                @include mq($from:tablet) {
+                    margin-left: -5.5em;
+                }
             }
             &.second {
-                top: 6.5vw;
+                @include mq(mobile, tablet) {
+                    margin-left: 6vw;
+                }
+                @include mq($from:tablet) {
+                    margin-left: 1.6em;
+                }
             }
         }
         .lead {
-            font-size: 6vw;
-            left: calc(50vw - 140px);
-            position: absolute;
+            display: block;
+            line-height: 0px;
+            margin-top: -0.1vw;
+            @include mq(mobile, mideMobile) {
+                font-size: 10vw;
+                margin-top: 2.9vw;
+            }
+            @include mq(mideMobile, tablet) {
+                font-size: 10vw;
+                margin-top: 0.9vw;
+            }
+            @include mq(tablet, desktop) {
+                font-size: 7vw;
+                margin-top: 0.9vw;
+            }
+            @include mq($from: desktop) {
+                font-size: 6vw;
+            }
         }
     }
     .second-heading {
         position: absolute;
         width: 100%;
-        bottom: calc(5vw + 60px);
+        @include mq(mobile, mideMobile) {
+            bottom: 68vw;
+        }
+        @include mq(mideMobile, tablet) {
+            bottom: 70vw;
+        }
+        @include mq(tablet, desktop) {
+            bottom: 24vw;
+        }
+        @include mq($from:desktop) {
+            bottom: calc(5vw + 60px);
+        }
+
         .heading {
             font-family: 'proxima-nova', sans-serif;
             font-size: 32.2px;
             letter-spacing: -0.05vw;
             font-weight: 900;
             text-transform: uppercase;
+            @include mq(mobile, mideMobile) {
+                font-size: 19.2px;
+            }
         }
     }
-    .sponsors {
-        position: absolute;
+    .featuring {
         width: 100%;
-        bottom: 2vw;
-        .logos {
-            width: 50%;
-            li {
-                margin-top: 20px;
-                img {
-                    height: 1.7vw;
-                }
+        position: absolute;
+        height: 5vw;
+        @include mq(mobile, mideMobile) {
+            bottom: 125vw;
+        }
+        @include mq(mideMobile, tablet) {
+            bottom: 106vw;
+        }
+        @include mq(tablet, desktop) {
+            top: 12vw;
+        }
+        @include mq($from:desktop) {
+            bottom: 2vw;
+        }
+        .left {
+            position: absolute;
+            left: 2.65vw;
+        }
+        .right {
+            position: absolute;
+            right: 6.250000vw
+        }
+        .name {
+            color: #fff;
+            font-size: 1.6vw;
+            font-weight: 900;
+            @include mq(mobile, tablet) {
+                font-size: 3.5vw;
+                font-weight: 700;
             }
         }
-        .featuring {
-            width: 25%;
-            &.left {
-                //margin-left: 2.65vw;
-            }
-            &.right {
-                // margin-right: 6.250000vw
-            }
-            .name {
-                color: #fff;
-                font-size: 1.6vw;
-                font-weight: 900;
+    }
+
+    .clients {
+        position: absolute;
+        width: 50%;
+        left: 25%;
+        bottom: 2vw;
+        @include mq(mobile, tablet) {
+            left: 0;
+            width: 100%;
+            bottom: 2vw;
+        }
+        @include mq(tablet, desktop) {
+            left: 11%;
+            width: 80%;
+        }
+        .logos {
+            width: 100%;
+            li {
+                padding: 0px;
+                img {
+                    width: 8vw; // height: 4vw;
+                    @include mq(mobile, tablet) {
+                        width: 40vw;
+                    }
+                    @include mq(tablet, desktop) {
+                        width: 17vw;
+                    }
+                    @include mq($from:desktop) {
+                        width: 7vw;
+                        height: 4vw;
+                    }
+                }
             }
         }
     }
@@ -130,33 +248,35 @@ footer {
     }
 }
 
-.navbar {
-    .navbar-nav {
-        >li>a {
-            padding: 25px 15px;
-            &:hover {
-                border-bottom: 1px solid $navbar-inverse-link-hover-color;
-            }
-        }
-    }
-    .collapse.navbar-collapse {
-        >button {
-            margin-top: 21px;
-        }
-    }
+.btn.fixed-width {
+    min-width: 200px; // @include mq(mobile, tablet) {
+    //     min-width: 200px;
+    // }
+    // @include mq(tablet, desktop) {
+    //     min-width: 150px;
+    // }
+    // @include mq($from:desktop) {
+    //     min-width: 100px;
+    // }
 }
 
 .navbar-brand {
     height: auto;
+    @include mq(mobile, mideMobile) {
+        width: 75%;
+    }
+    @include mq(mideMobile, tablet) {
+        width: 60%;
+    }
     >img {
         width: 100%;
     }
 }
 
-.btn.fixed-width {
-    min-width: 200px;
-}
-
 .inline .btn+.btn {
     margin-left: 1.5vw;
+    @include mq(mobile, mideMobile) {
+        margin-left: 0;
+        margin-top: 3.5vw;
+    }
 }

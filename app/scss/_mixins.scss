@@ -1,3 +1,5 @@
+@import 'mq';
+
 @mixin transition($transition...) {
     -moz-transition:    $transition;
     -o-transition:      $transition;

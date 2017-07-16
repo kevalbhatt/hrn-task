@@ -3,6 +3,13 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
+
+
+
+
+/* override bootstrap css */
+
 .btn-default {
     &:hover {
         color: $btn-primary-color;
@@ -16,5 +23,21 @@
         color: $btn-default-color;
         background-color: $btn-default-bg;
         border-color: $btn-default-border;
+    }
+}
+
+.navbar {
+    .navbar-nav {
+        >li>a {
+            padding: 25px 15px;
+            &:hover {
+                border-bottom: 1px solid $navbar-inverse-link-hover-color;
+            }
+        }
+    }
+    .collapse.navbar-collapse {
+        >button {
+            margin-top: 21px;
+        }
     }
 }

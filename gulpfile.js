@@ -43,6 +43,7 @@ gulp.task("scss", ['icons'], function() {
             style: 'compressed',
             includePaths: [
                 config.scssPath,
+                config.nodeDir + '/sass-mq',
                 config.nodeDir + '/bootstrap-sass/assets/stylesheets',
                 config.nodeDir + '/font-awesome/scss'
             ]
