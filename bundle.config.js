@@ -1,5 +1,10 @@
 // bundle.config.js 
 var sass = require("gulp-sass");
+
+function minifyNeeded() {
+    return  process.env.NODE_ENV === 'production' ? true : false
+}
+
 var config = {
     scssPath: './app/scss',
     nodeDir: './node_modules',
@@ -14,8 +19,9 @@ module.exports = {
         app: {
             styles: [config.app + '/scss/style.scss'],
             options: {
-                minCSS: true,
+                minCSS: minifyNeeded(),
                 maps: false,
+                uglify: minifyNeeded(),
                 transforms: {
                     styles: function(argument) {
                         return sass({
@@ -31,13 +37,20 @@ module.exports = {
         },
         vendor: {
             scripts: [
-                './node_modules/aos/dist/aos.js',
                 './node_modules/jquery/dist/jquery.js',
+                './node_modules/aos/dist/aos.js',
                 './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'
             ],
             styles: ['./node_modules/aos/dist/aos.css', config.app + '/scss/vendor.scss'],
             options: {
                 maps: false,
+                order: {
+                    scripts: [
+                        '**/jquery.js',
+                        '**/aos.js',
+                        '**/bootstrap.js'
+                    ]
+                },
                 transforms: {
                     styles: function(argument) {
                         return sass({

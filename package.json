@@ -4,7 +4,8 @@
   "description": "hrn task",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp"
+    "start": "npm install && NODE_ENV='development' gulp",
+    "prod": "npm install &&  NODE_ENV='production' gulp"
   },
   "author": "Keval Bhatt",
   "license": "MIT",
