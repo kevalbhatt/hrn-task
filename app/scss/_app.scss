@@ -1,5 +1,32 @@
 @include mq-add-breakpoint(mideMobile, 428px);
 
+.btn,
+a {
+    @include transition(all .50s);
+    @include transition-timing-function(ease-in-out);
+}
+
+@include mq(mobile, mideMobile) {
+    background: url(img/banner/banner-mobile.jpg) center top no-repeat;
+    background-size: cover;
+    height: 221vw;
+}
+
+
+
+.small-container {
+    @include mq(mobile, tablet) {
+        margin: 0% 5%;
+    }
+    @include mq(tablet, desktop) {
+        margin: 0% 15%;
+    }
+
+    @include mq($from:desktop) {
+        margin: 0% 20%;
+    }
+}
+
 header {
     text-align: center;
     position: relative;
@@ -33,7 +60,7 @@ header {
     }
     .first-heading {
         width: 100%;
-        margin-top: 20vh;
+        margin-top: 15vw;
         font-family: "Playfair Display", serif;
         @include mq(mobile, tablet) {
             margin-top: 30vw;
@@ -293,4 +320,42 @@ section {
     @include transition-timing-function(ease-in-out);
     padding: 60px 0px;
     text-align: center;
+    h2 {
+        margin: 30px 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    &.about {
+        h2 {
+            color: #99cc00;
+        }
+    }
+    &.download_app {
+        background: url(img/download_app/bg.jpg) top no-repeat;
+        background-size: cover;
+        color: #000;
+        .store-button>.fixed-width {
+            min-width: 160px;
+        }
+        .tutorials-button {
+            margin-top: 40px;
+        }
+        .logo-img {
+            margin-top: 35px;
+        }
+        .mobile-img {
+            background-image: url(img/download_app/predictive-hire.svg);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 5px) 100%;
+            background-size: 47%;
+            padding-bottom: 22px;
+            padding-right: 36px;
+            @include mq(mobile, tablet) {
+                width: 150px
+            }
+            @include mq($from: tablet) {
+                width: 200px;
+            }
+        }
+    }
 }

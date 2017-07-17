@@ -2,7 +2,7 @@
 var sass = require("gulp-sass");
 
 function minifyNeeded() {
-    return  process.env.NODE_ENV === 'production' ? true : false
+    return process.env.NODE_ENV === 'production' ? true : false
 }
 
 var config = {
@@ -58,7 +58,8 @@ module.exports = {
                             includePaths: [
                                 config.scssPath,
                                 config.nodeDir + '/bootstrap-sass/assets/stylesheets',
-                                config.nodeDir + '/font-awesome/scss'
+                                config.nodeDir + '/font-awesome/scss',
+                                config.nodeDir + '/roboto-fontface/css/roboto/sass'
                             ]
                         });
                     }
@@ -72,5 +73,8 @@ module.exports = {
     }, {
         src: config.nodeDir + "/font-awesome/fonts/**.*",
         base: config.nodeDir + "/font-awesome"
+    },{
+        src: config.nodeDir + "/roboto-fontface/fonts/roboto/**.*",
+        base: config.nodeDir + "/roboto-fontface"
     }]
 };

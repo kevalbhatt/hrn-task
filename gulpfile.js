@@ -8,14 +8,18 @@ var gulp = require('gulp'),
     fileinclude = require('gulp-file-include'),
     config = require('./bundle.config.js').directoryPath;
 
+function requireUncached(module) {
+    delete require.cache[require.resolve(module)]
+    return require(module)
+}
 
 gulp.task('fileinclude', ['bundle'], function() {
-    gulp.src(['index.html'])
+    return gulp.src(['index.html'])
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file',
             context: {
-                fileUrls: require('./bundle.result.json')
+                fileUrls: requireUncached('./bundle.result.json')
             }
         }))
         .pipe(gulp.dest(config.dist));
@@ -28,10 +32,14 @@ gulp.task('bundle', ['clean'], function() {
         .pipe(gulp.dest(config.dist));
 });
 
-gulp.task('clean', function() {
-    del.sync(['./public/**/*', '!public']);
-});
+// gulp.task('copy-font', ['bundle', 'clean'], function() {
+//     return gulp.src(config.nodeDir + "/typeface-playfair-display/files/playfair-display-latin-4*.*")
+//         .pipe(gulp.dest('./public/fonts'));
+// });
 
+gulp.task('clean', function() {
+    return del.sync(['./public/**/*', '!public']);
+});
 
 /*Gulp server config*/
 gulp.task('webserver', function() {
@@ -43,6 +51,7 @@ gulp.task('webserver', function() {
             open: true // open default browser
         }));
 });
+
 
 /*Watch for file change and call copy task*/
 gulp.task('watch', ['webserver'], function() {
