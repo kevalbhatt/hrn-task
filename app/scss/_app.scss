@@ -363,7 +363,7 @@ section {
         .mobile-img {
             background-image: url(img/download_app/predictive-hire.svg);
             background-repeat: no-repeat;
-            background-position: calc(100% - 5px);
+            background-position: calc(100% - 5px) 100%;
             background-size: 47%;
             padding-bottom: 22px;
             padding-right: 36px;
