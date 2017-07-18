@@ -12,7 +12,13 @@ a {
     height: 221vw;
 }
 
+.big-inline {
+    line-height: 2em;
+}
 
+.big-margin {
+    margin-top: 2vw;
+}
 
 .small-container {
     @include mq(mobile, tablet) {
@@ -307,11 +313,17 @@ footer {
     }
 }
 
-.inline .btn+.btn {
-    margin-left: 1.5vw;
-    @include mq(mobile, mideMobile) {
-        margin-left: 0;
-        margin-top: 3.5vw;
+.inline .btn {
+    @include mq(mobile, tablet) {
+        margin-bottom: 3.5vw;
+    }
+    +.btn {
+        @include mq(mobile, tablet) {
+            margin-left: 0;
+        }
+        @include mq($from: tablet) {
+            margin-left: 1.5vw;
+        }
     }
 }
 
@@ -340,13 +352,18 @@ section {
         .tutorials-button {
             margin-top: 40px;
         }
-        .logo-img {
-            margin-top: 35px;
+        .right-block {
+            margin-top: calc(50vh - 243px);
+            .logo-img {
+                @include mq(tablet, desktop) {
+                    width: 50vw;
+                }
+            }
         }
         .mobile-img {
             background-image: url(img/download_app/predictive-hire.svg);
             background-repeat: no-repeat;
-            background-position: calc(100% - 5px) 100%;
+            background-position: calc(100% - 5px);
             background-size: 47%;
             padding-bottom: 22px;
             padding-right: 36px;
