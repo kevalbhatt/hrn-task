@@ -206,7 +206,16 @@ header {
         }
         .logos {
             width: 100%;
+            ul:hover li {
+                @include scale(0.5);
+            }
             li {
+                @include transition(all .50s);
+                @include transition-timing-function(ease-in-out);
+                &:hover {
+                    @include scale(2.2, !important);
+                    margin: 0px 25px;
+                }
                 padding: 0px;
                 img {
                     width: 8vw; // height: 4vw;

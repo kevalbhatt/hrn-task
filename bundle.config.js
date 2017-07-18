@@ -17,6 +17,9 @@ module.exports = {
     directoryPath: config,
     bundle: {
         app: {
+            scripts: [
+                './app/js/app.js'
+            ],
             styles: [config.app + '/scss/style.scss'],
             options: {
                 minCSS: minifyNeeded(),
@@ -39,7 +42,8 @@ module.exports = {
             scripts: [
                 './node_modules/jquery/dist/jquery.js',
                 './node_modules/aos/dist/aos.js',
-                './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js'
+                './node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+                './node_modules/jquery.easing/jquery.easing.js'
             ],
             styles: ['./node_modules/aos/dist/aos.css', config.app + '/scss/vendor.scss'],
             options: {
@@ -48,7 +52,8 @@ module.exports = {
                     scripts: [
                         '**/jquery.js',
                         '**/aos.js',
-                        '**/bootstrap.js'
+                        '**/bootstrap.js',
+                        '**/jquery.easing.js'
                     ]
                 },
                 transforms: {
@@ -73,7 +78,7 @@ module.exports = {
     }, {
         src: config.nodeDir + "/font-awesome/fonts/**.*",
         base: config.nodeDir + "/font-awesome"
-    },{
+    }, {
         src: config.nodeDir + "/roboto-fontface/fonts/roboto/**.*",
         base: config.nodeDir + "/roboto-fontface"
     }]
