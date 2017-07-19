@@ -17,5 +17,6 @@ $ npm start
 Available Scripts.
 * npm start (for development)
 * npm run prod (for production)
+* npm run w3c-html-validate (for w3c standard validation)
 
 Gulp server will start and it will open default browser after the above command is executed.
