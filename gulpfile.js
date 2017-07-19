@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     bundle = require('gulp-bundle-assets'),
     fileinclude = require('gulp-file-include'),
-    config = require('./bundle.config.js').directoryPath;
+    config = require('./bundle.config.js').directoryPath,
+    w3cjs = require('gulp-w3cjs');
 
 function requireUncached(module) {
     delete require.cache[require.resolve(module)]
@@ -31,11 +32,6 @@ gulp.task('bundle', ['clean'], function() {
         .pipe(bundle.results('./'))
         .pipe(gulp.dest(config.dist));
 });
-
-// gulp.task('copy-font', ['bundle', 'clean'], function() {
-//     return gulp.src(config.nodeDir + "/typeface-playfair-display/files/playfair-display-latin-4*.*")
-//         .pipe(gulp.dest('./public/fonts'));
-// });
 
 gulp.task('clean', function() {
     return del.sync(['./public/**/*', '!public']);
@@ -63,4 +59,10 @@ gulp.task('watch', ['webserver'], function() {
 /*Gulp bootstrap*/
 gulp.task('default', function(done) {
     runSequence('fileinclude', ['watch'], done);
+});
+
+gulp.task('w3c-html-validate', ['fileinclude'], function() {
+    gulp.src('public/*.html')
+        .pipe(w3cjs())
+        .pipe(w3cjs.reporter());
 });

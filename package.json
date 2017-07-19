@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "npm install && cross-env NODE_ENV='development' gulp",
-    "prod": "npm install &&  cross-env NODE_ENV='production' gulp"
+    "prod": "npm install &&  cross-env NODE_ENV='production' gulp",
+    "w3c-test":"npm install &&  cross-env NODE_ENV='production' gulp w3c-html-validate"
   },
   "author": "Keval Bhatt",
   "license": "MIT",
@@ -18,6 +19,7 @@
     "gulp-copy": "^1.0.0",
     "gulp-file-include": "^1.1.0",
     "gulp-sass": "^3.1.0",
+    "gulp-w3cjs": "^1.3.0",
     "gulp-watch": "^4.3.11",
     "gulp-webserver": "^0.9.1",
     "run-sequence": "^2.0.0",
